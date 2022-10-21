@@ -2,6 +2,9 @@ use rand::Rng;
 use std::char;
 use std::env;
 
+const ASCII_TABLE_INITIAL_RANGE: u32 = 33;
+const ASCII_TABLE_FINAL_RANGE: u32 = 126;
+
 fn print_usage() {
   println!("Invalid call!\nUsage: ./rust-password-generator <password_length>");
 }
@@ -12,7 +15,7 @@ fn gen_password(length: u32) -> String {
   for _ in 1..=length {
     password.push(
       char::from_u32(
-        rand::thread_rng().gen_range(33..=126)
+        rand::thread_rng().gen_range(ASCII_TABLE_INITIAL_RANGE..=ASCII_TABLE_FINAL_RANGE)
       ).unwrap()
     )
   }
